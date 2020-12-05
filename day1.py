@@ -1,4 +1,5 @@
-# Script for Avent Of Code 2020
+# Sébastien Touzé
+# Script for Advent Of Code 2020
 # DAY 01
 
 def day1(report):
@@ -17,7 +18,7 @@ def day1part2(report):
 
 
 testInput = [1721, 979, 366, 299, 675, 1456]
-with open("day1input", "rt") as file:
+with open("data/day1input", "rt") as file:
     inputFile = [int(line.strip()) for line in file]
 
 print(inputFile)
