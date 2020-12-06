@@ -19,7 +19,7 @@ def parse_boarding_pass(bpass):
     return row, column, row * 8 + column
 
 
-def search_mad_id(file):
+def search_max_id(file):
     with open(file, "rt") as file:
         max_id = -1
         for line in file:
@@ -30,4 +30,24 @@ def search_mad_id(file):
         print(max_id)
 
 
-search_mad_id("data/day5input")
+def check_all_seats(file, ids):
+    with open(file, "rt") as file:
+        for line in file:
+            line = line.strip()
+            id_occupied = (parse_boarding_pass(line))[2]
+            ids[id_occupied] = 1
+        return ids
+
+
+def find_my_seat(ids):
+    for i in range(1, len(ids)):
+        if 0 == ids[i] and 1 == ids[i+1] and 1 == ids[i - 1]:
+            return i
+    return 0
+
+
+print('Part 1 : printing max seat ID')
+search_max_id("data/day5input")
+
+print('Part 2 : finding my seat ID')
+print(find_my_seat(check_all_seats("data/day5input", [0] * (127 * 8 + 7))))
